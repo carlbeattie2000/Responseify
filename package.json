@@ -1,0 +1,9 @@
+{
+  "name": "Responseify",
+  "version": "0.1.0",
+  "description": "Responseify is a lightweight Node.js library that  provides a structured and consistent way to generate HTTP responses.",
+  "main": "index.js",
+  "repository": "http",
+  "author": "carlbeattie2000",
+  "license": "MIT"
+}
