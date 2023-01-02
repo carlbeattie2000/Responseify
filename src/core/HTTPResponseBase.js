@@ -28,8 +28,19 @@ class HTTPResponseBase {
     if (response.requestId) this.requestId = response.requestId;
   }
 
-  async createRequestId() {
-    this.requestId = await generateUniqueId();
+  createRequestId() {
+    this.requestId = generateUniqueId();
+  }
+
+  // Default node HTTP server
+  send(res) {
+    res.statusCode = this.statusCode;
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(this));
+  }
+
+  expressSend(res) {
+    res.status(this.statusCode).json(this);
   }
 }
 

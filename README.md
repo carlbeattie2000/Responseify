@@ -78,4 +78,49 @@ app.listen(3000);
 
 ## Documentation
 
+You can use the send function to quickly and easily send a response to the user. To use it, simply call the ```.send()``` on the response object.
+
+```js
+const response = HTTPResponseBuilder({
+  "statusCode": 200,
+  "metadata": {
+    "post": {
+      "author": "poster1"
+    }
+  }
+});
+
+// Node HTTP server
+response.send(res);
+
+// Express server
+response.expressSend(res);
+```
+
+Use the ```.createRequestId()``` to generate a unique request id for your response.
+```js
+const response = HTTPResponseBuilder({
+  "statusCode": 200,
+  "metadata": {
+    "post": {
+      "author": "poster1"
+    }
+  }
+});
+
+response.createRequestId();
+```
+
+If you only need to use certain ranges of status codes (e.g., 2xx success codes or 4xx client error codes), you can use tree shaking to access specific ranges of status codes like this:
+```js
+const { _2XX } = require("responseify");
+
+const response = new _2XX({
+  statusCode: 200,
+  metadata: {
+    username: "carl212"
+  }
+})
+```
+
 Responseify supports all HTTP status codes listed on the [HTTP status codes Wikipedia page](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
