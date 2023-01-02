@@ -2,7 +2,7 @@
 const { describe, it} = require('node:test');
 const { throws, equal, deepEqual} = require("node:assert");
 
-const { HTTPResponseBuilder } = require("../");
+const { HTTPResponseBuilder } = require("..");
 const { InvalidStatusCode, NoStatusCodeProvided } = require('../core/HTTPStatusCodeError');
 
 describe("Bundles all the status code classes together, and creates the right one from the passed status code" , () => {
