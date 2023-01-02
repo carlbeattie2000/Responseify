@@ -1,4 +1,5 @@
 const { NoStatusCodeProvided } = require("./HTTPStatusCodeError");
+const generateUniqueId = require("./uniqueReferenceId");
 
 class HTTPResponseBase {
   statusCode;
@@ -25,6 +26,10 @@ class HTTPResponseBase {
     if (response.reference) this.reference = response.reference;
 
     if (response.requestId) this.requestId = response.requestId;
+  }
+
+  async createRequestId() {
+    this.requestId = await generateUniqueId();
   }
 }
 
